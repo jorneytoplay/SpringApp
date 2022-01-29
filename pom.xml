@@ -71,16 +71,6 @@
             <artifactId>spring-boot-starter-websocket</artifactId>
             <version>2.6.3</version>
         </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>stomp-websocket</artifactId>
-            <version>2.3.3</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>3.1.1-1</version>
-        </dependency>
     </dependencies>
 
     <build>
