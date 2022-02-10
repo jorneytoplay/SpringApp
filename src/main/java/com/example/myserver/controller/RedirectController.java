@@ -17,9 +17,10 @@ public class RedirectController {
             return "redirect:/admin/welcomeAdmin";
         }
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String nickname = auth.getName();
+        String username = auth.getName();
         //Вывести имя пользователя
-        model.addAttribute("nickname",nickname);
-        return "welcome";
+        model.addAttribute("nickname",username);
+        request.getSession().setAttribute("username", username);
+        return "redirect:/";
     }
 }

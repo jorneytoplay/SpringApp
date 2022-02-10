@@ -7,11 +7,15 @@ import com.example.myserver.service.SecurityService;
 import com.example.myserver.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UserController {
@@ -52,11 +56,18 @@ public class UserController {
 
 
 
-
-
     @GetMapping("/admin")
     public String admin(Model model){
         return "admin";
+    }
+
+    @GetMapping("/")
+    public String index(HttpServletRequest request, Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String username = auth.getName();
+        model.addAttribute("username", username);
+
+        return "chat";
     }
 
 }
